@@ -70,37 +70,38 @@ func (o *object) checkLevel(level Level) bool {
 }
 
 // 打印INFO级别日志
-func (o *object) Info(msg string) {
+func (o *object) Info(msg string, a ...interface{}) {
 	if o.checkLevel(INFO) {
 		// 拼接字符串
-		msg = fmt.Sprintf("%s [INFO] %s", getTimeNow(), msg)
+		msg = fmt.Sprintf("%s [INFO] %s", getTimeNow(), fmt.Sprintf(msg, a...))
 		ch <- msg
 	}
 }
 
 // 打印DEBUG级别日志
-func (o *object) Debug(msg string) {
+func (o *object) Debug(msg string, a ...interface{}) {
 	if o.checkLevel(DEBUG) {
 		// 拼接字符串
-		msg = fmt.Sprintf("%s [DEBUG] %s", getTimeNow(), msg)
+		msg = fmt.Sprintf("%s [DEBUG] %s", getTimeNow(), fmt.Sprintf(msg, a...))
 		ch <- msg
 	}
 }
 
 // 打印WARNING级别日志
-func (o *object) Warning(msg string) {
+func (o *object) Warning(msg string, a ...interface{}) {
 	if o.checkLevel(WARNING) {
 		// 拼接字符串
-		msg = fmt.Sprintf("%s [WARNING] %s", getTimeNow(), msg)
+		msg = fmt.Sprintf("%s [WARNING] %s", getTimeNow(), fmt.Sprintf(msg, a...))
 		ch <- msg
 	}
 }
 
 // 打印ERROR级别日志
-func (o *object) Error(msg string) {
+func (o *object) Error(msg string, a ...interface{}) {
 	if o.checkLevel(ERROR) {
 		// 拼接字符串
-		msg = fmt.Sprintf("%s [ERROR] %s", getTimeNow(), msg)
+		msg = fmt.Sprintf("%s [ERROR] %s", getTimeNow(), fmt.Sprintf(msg, a...))
+		ch <- msg
 		ch <- msg
 	}
 }
