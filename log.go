@@ -102,6 +102,5 @@ func (o *object) Error(msg string, a ...interface{}) {
 		// 拼接字符串
 		msg = fmt.Sprintf("%s [ERROR] %s", getTimeNow(), fmt.Sprintf(msg, a...))
 		ch <- msg
-		ch <- msg
 	}
 }
